@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/D:/stock_pro/portfoliooo/bb.css">
+
+</head>
+<body>
+    <div class="container">
+
+        <form autocomplete="off" method="post" name="google-sheet" >
+            <h3><center>Place Order</center></h3>
+            <input type="text" placeholder="Name of Company" name="Company_name">
+            <input type="text" placeholder="Number of Share" name="No_share"> 
+            <input type="text" placeholder="Buying Price" name="Buy_price">
+
+
+
+
+            <button type="submit" name="submit">Buy</button>
+            <button type="reset" class="reset" >Reset</button>
+
+        </form>
+
+
+
+    </div>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbz2WvMiGIhcDQIooO6W7yUl9A0tULVAl-hjnJWS9RGNrc-XZqm7i7pgHW8s0NqpBffaNg/exec'
+        const form = document.forms['google-sheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+
+</body>
+</html>
